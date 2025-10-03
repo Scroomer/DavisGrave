@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>DavisGrave</title>
+<link rel="icon" href="c.png">
+
+</head>
+<style>
+@font-face {
+  font-family: font;
+  src: url(templeos_font.otf);
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+}
+.bordered{
+	border-style: double;
+	border-width:10px;
+}
+button
+{
+	background-color:transparent;
+    border: none;
+	button:hover{
+		background-color: white;
+		mix-blend-mode: screen;
+	}
+}
+html {
+          cursor: url("cross.png"), auto;
+      }
+</style>
+<div id="txt" style="text-align: right;"></div>
+
+<body style="background-color:#6CFCFF; color:blue; font-family: font; text-align: center;">
+<h1>
+	WELCOME TO THE TERRY DAVIS MEMORIAL
+</h1>
+<div>
+TERRY DAVIS IS A GOOD MAN
+</div>
+ <div class="container" style="color:blue;">
+  <img src="swords.gif" style="width:40%; height:auto">
+  <div class="centered" id="verse">PRAYING...</div>
+  <button class="centered" type="button" onclick="newBible()" style="top:65%"><img src="books.png" style="width:35px; height:35px"></button>
+</div> 
+<br></br>
+<script>
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function start() {
+	startTime();
+	newBible();
+}
+
+async function newBible() {
+	document.getElementById('verse').innerHTML = "PRAYING.";
+	await sleep(150);
+	document.getElementById('verse').innerHTML = "PRAYING..";
+	await sleep(150);
+	document.getElementById('verse').innerHTML = "PRAYING...";
+	setTimeout(getBible, 150);
+	
+}
+
+function getBible() {
+  fetch('https://labs.bible.org/api/?passage=random') <!-- Get api json (plain text now actually) content to id="output" -->
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('verse').innerHTML = data;
+    })
+    .catch(error => {
+      document.getElementById('verse').textContent = 'Error: ' + error;
+    });
+}
+
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+start();
+</script>
+<img class="bordered" src="https://cataas.com/cat" style="width:auto; height:30%">
+
+</body>
