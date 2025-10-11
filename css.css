@@ -1,0 +1,46 @@
+@font-face {
+  font-family: font;
+  src: url(templeos_font.otf);
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+}
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 20px;
+}
+
+.bordered{
+	border-style: double;
+	border-width:10px;
+}
+button
+{
+	background-color:transparent;
+    border: none;
+}
+button:hover{
+		background-color: white;
+		mix-blend-mode: multiply;
+	}
+html, button, a{
+	height: 100%;
+	cursor: url("cross.png") 8 8, auto;
+}
