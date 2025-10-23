@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Cars</title>
+<link rel="icon" href="tumblr_o7nxhf5teN1tfir0mo1_500.gif">
+<link rel="stylesheet" href="css.css">
+
+<style>
+/*Below are for columns*/
+*{
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.333%;
+  padding: 50px;
+  height:76.4%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@font-face {
+  font-family: font;
+  src: url("Open 24 Display St.ttf");
+}
+@font-face {
+  font-family: fontB;
+  src: url("abduction2002.ttf");
+}
+.font{
+  font-family:font;
+  font-size:25px;
+}
+</style>
+</head>
+<div class="topleft">
+    <a href="davis.html">
+	  Return
+    </a>
+</div>
+<body class="font" style="background-color:black; color:white; text-align: center;">
+<h1 style="font-family: fontB">VHS Player</h1>
+<div class="row">
+  <div class="column">
+    <h3>PREVIOUS VIDEO</h3>
+	<button type="button" onclick="changeVideo(-1)" style="width:auto; height:30%"><img src="tumblr_om40a3oS3J1t0bo4to1_500.gif"></button>
+  </div>
+  <div class="column">
+    <h3></h3>
+	<div style="position:relative;">
+		<img src="TV.png" style="width:auto; height:60%;">
+		<video id="player" src="drift.mp4" style="position:absolute; top:40; left:49.7%; width:62%; height:62%; z-index:-5; transform:translate(-50%, 0%);" autoplay muted loop></video>
+		<img src="static2.gif" style="position:absolute; top:40; left:49.7%; width:62%; height:62%; z-index:-6; transform:translate(-50%, 0%);">
+	</div>
+  </div>
+  <div class="column">
+    <h3>NEXT VIDEO</h3>
+	<button type="button" onclick="changeVideo(1)" style="width:auto; height:30%"><img src="tumblr_om417r2wOK1t0bo4to1_500.gif"></button>
+  </div>
+</div>
+<video src="hotline.mp4" style="width:100%; height:auto; position:fixed; right:0; top:0; z-index:-10" autoplay muted loop>
+</body>
+
+<script>
+const player = document.getElementById("player");
+
+const clips = ["drift.mp4", "ScroomVilleJDM.mp4", "e36.mp4", "e36b.mp4"];
+
+function changeVideo(positionChange) {
+	let filename = player.src.substring(player.src.lastIndexOf('/') + 1);
+	let newPosition = clips.indexOf(filename) + positionChange;
+	if (newPosition >= clips.length) newPosition = 0;
+	else if (newPosition < 0) newPosition = clips.length - 1;
+	player.src = clips[newPosition];
+}
+</script>

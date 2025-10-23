@@ -3,6 +3,19 @@
   src: url(templeos_font.otf);
 }
 
+.bobbing {
+  position: relative;
+  animation-name: Animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+@keyframes Animation {
+  0%   {top: 40%;}
+  100% {top: 60%;}
+}
+
 .container {
   position: relative;
   text-align: center;
@@ -20,16 +33,25 @@
   right: 8px;
   font-size: 20px;
 }
+.centerright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+  transform: translate(0%, -50%);
+}
 .topleft {
   position: absolute;
   top: 8px;
   left: 8px;
-  font-size: 20px;
 }
 
 .bordered{
 	border-style: double;
-	border-width:10px;
+	border-width:10px;21
+}
+.glow{
+	box-shadow: 0px 0px 60px 15px gold;
 }
 button
 {
@@ -37,8 +59,8 @@ button
     border: none;
 }
 button:hover{
-		background-color: white;
-		mix-blend-mode: multiply;
+		mix-blend-mode: screen;
+		filter: drop-shadow(0px 0px 15px white);
 	}
 html, button, a{
 	height: 100%;
